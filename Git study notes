@@ -1,0 +1,34 @@
+1 创建版本库：
+mkdir name
+cd name
+git init  //至此建好一个空的仓库
+mkdir readme.txt
+vi readme.txt
+git add readme.txt//提交到暂存区
+git commit -m "add a file"//至此提交一个文件到仓库里，*master
+
+2 时光机穿梭
+git log //查看提交日志
+git reset --hard HEAD^//版本回退，^个数表示回退层数
+git reset --hard ***  //恢复版本，**是版本号
+git checkout -- readme.txt //撤销工作区的修改
+rm readme.txt
+git rm readme.txt          //从版本库删除
+git commit -m "delete readme.txt"
+git checkout -- readme.txt  //误删恢复，若从未添加到版本库则无法恢复
+
+3 远程仓库
+git remote add origin git@github.com:username/gitname.git  //从本地库关联Github远程库
+git push -u origin master              //本地库内容推送至远程库
+git push origin master                 //推送最新修改
+git clone git@github.com:username/gitname.git//从远程库克隆一个本地库   SSH协议，也可用HTTP协议
+cd gitname
+ls          //查看本地库
+
+4 分支管理
+git checkout -b dev          //创建并切换新分支  也可用git switch -c dev
+git checkout master          //切换分支
+git merge dev               //将此分支合并到当前分支
+git branch                 //查看分支
+git branch -d branchname    //删除分支
+git rebase                //变基
